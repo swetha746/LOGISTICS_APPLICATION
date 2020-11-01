@@ -1,0 +1,63 @@
+<template>
+	<lightning-card title="Customers" icon-name="custom:custom51">
+		<div class="slds-card__body_inner">
+			<!-- Start customer list -->
+			<template if:true={customers.data}>
+				<lightning-layout multiple-rows="true" pull-to-boundary="small">
+					<template for:each={customers.data} for:item="customer">
+						<lightning-layout-item key={customer.id} size="3" class="slds-var-p-around_x-small">	
+							<!-- Start customer tile -->
+							<lightning-card title={customer.First_Name__c} >
+                                <div style = "border: 1px solid #d2955d;
+                                background-color: #fae8d2;
+                                border-radius: .25rem;"> 
+              
+                                    <div class="slds-var-p-horizontal_small ">
+                                        <div style = "background: linear-gradient(180deg, rgba(255,255,255,1) 80%, #fae8d2 100%);"> 
+                                        <div class="slds-media">
+                                            
+                                            <div class="slds-media__body">
+												<div class="demo-only" style="padding:0.5rem;background:#'L;'
+												''>
+													<p class="slds-var-m-bottom_xx-small slds-text-color_inverse">DETAILS OF THE CUSTOMER</p>
+												</div>
+                                                
+                                                    <p class="slds-var-m-bottom_xx-small">First Name:- {customer.First_Name__c}</p>
+                                                    <p class="slds-var-m-bottom_xx-small">Second Name:- {customer.Second_Name__c} </p>
+                                                    <p class="slds-var-m-bottom_xx-small">Email:- {customer.Email__c} </p>
+													<p class="slds-var-m-bottom_xx-small">MobileNumber:- {customer.MobileNumber__c} </p>
+													<p class="slds-var-m-bottom_xx-small">Location:- {customer.Location__Latitude__s},{customer.Location__Longitude__s} </p>
+													<div class="demo-only" style="background:#6e9adc">
+														<p class="slds-var-m-bottom_xx-small slds-text-color_inverse">Delivery Address</p>
+													</div>
+                                                    <p class="slds-var-m-bottom_xx-small">Address- {customer.Address__c} </p>
+                                                    <p class="slds-var-m-bottom_xx-small">LandMark:- {customer.LandMark__c} </p>
+                                                    <p class="slds-var-m-bottom_xx-small">City:- {customer.City__c} </p>
+                                                    <p class="slds-var-m-bottom_xx-small">State:- {customer.State__c} </p>
+                                                    <p class="slds-var-m-bottom_xx-small">Pincode:- {customer.Pincode__c} </p>
+                                                    
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning-card>
+							<!-- End bear tile -->
+						</lightning-layout-item>
+					</template>
+				</lightning-layout>
+			</template>
+			<!-- End bear list -->
+			<!-- Data failed to load -->
+			
+
+
+			<template if:true={customers.error}>
+				<div class="slds-text-color_error">
+					An error occurred while loading the bear list
+				</div>
+			</template>
+		</div>
+	</lightning-card>
+</template>
