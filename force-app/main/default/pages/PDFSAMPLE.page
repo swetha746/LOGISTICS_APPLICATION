@@ -1,0 +1,37 @@
+<apex:page standardStylesheets="false" showHeader="false" controller="RetrieveAccounts" renderAs="pdf">
+
+<div style="background:url('{!$Resource.Logistics}')  no-repeat center center; height:800px;font-family: Arial, Helvetica, sans-serif;">
+    <h2>INVOICE</h2>   
+    
+    <table style="border-collapse: collapse;width: 100%;">
+      <tr style="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">
+        <th>CustomerName</th>
+        <th style="padding-right: 5px;">product Name</th>
+         <th>Quantity</th>
+      </tr> 
+      <apex:repeat value="{!AccountList}" var="AccountObj">
+        <tr style="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">
+            <td style="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">{!AccountObj.Name}</td>
+            <td style="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">{!AccountObj.Product_Name__c}</td>
+            <td style="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">{!AccountObj.quantity__c}</td>
+        </tr>
+      </apex:repeat>
+      
+    </table> 
+    <table style="margin-top:100px;border-collapse: collapse;width: 100%;">
+        <tr style="text-align: left;border-bottom: 1px solid #ddd;">
+          <th style="padding-right:170px">DriverCharges</th>
+          <th style="padding-right:250px;">Tax</th>
+        <th style="padding-right:90px;">Price</th>
+        </tr> 
+        </table> 
+        <apex:repeat value="{!AccountList}" var="AccountObj">
+            <tr style="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">
+                <td style="padding: 8px 250px 8px 8px;text-align: left;border-bottom: 1px solid #ddd;">{!AccountObj.Driver_Charges__c}</td>
+                <td style="padding: 8px 250px 8px 8px;text-align: left;border-bottom: 1px solid #ddd;">{!AccountObj.quantity__c}</td>
+                <td style="padding: 8px;text-align: left;border-bottom: 1px solid #ddd;">{!AccountObj.product_price__c}</td>
+            </tr>
+            <hr/>
+          </apex:repeat>
+</div>
+</apex:page>
